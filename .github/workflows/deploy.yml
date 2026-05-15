@@ -17,7 +17,7 @@ jobs:
         uses: appleboy/ssh-action@master
 
         with:
-          host: 172.31.46.40
+          host: 13.60.15.251
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
 
