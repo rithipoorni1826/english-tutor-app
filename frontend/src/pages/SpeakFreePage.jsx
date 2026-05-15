@@ -221,7 +221,7 @@ export default function SpeakFreePage() {
                 </div>
               )}
 
-              {(result.explanationEnglish || result.explanationTamil) && (
+              {(result.explanationEnglish || result.explanationTamil || result.explanationHindi) && (
                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', background: 'rgba(243, 156, 18, 0.1)', padding: '15px', borderRadius: '12px', borderLeft: '4px solid #f39c12' }}>
                    {result.explanationEnglish && (
                      <div>
@@ -233,6 +233,12 @@ export default function SpeakFreePage() {
                      <div>
                        <h4 style={{ color: '#e67e22', margin: '10px 0 5px 0', fontSize: '0.9rem', textTransform: 'uppercase' }}>Tamil Explanation:</h4>
                        <p style={{ margin: 0, fontSize: '1.05rem', lineHeight: '1.5', color: '#fff' }}>{result.explanationTamil}</p>
+                     </div>
+                   )}
+                   {result.explanationHindi && (
+                     <div>
+                       <h4 style={{ color: '#3498db', margin: '10px 0 5px 0', fontSize: '0.9rem', textTransform: 'uppercase' }}>Hindi Explanation:</h4>
+                       <p style={{ margin: 0, fontSize: '1.05rem', lineHeight: '1.5', color: '#fff' }}>{result.explanationHindi}</p>
                      </div>
                    )}
                  </div>

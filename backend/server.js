@@ -384,7 +384,7 @@ app.post('/api/transcribe', upload.single('audio'), async (req, res) => {
     fs.unlink(webmPath, () => {});
     res.json({ text: transcription.trim() });
   } catch (error) {
-    console.error("Error transcribing audio:", error);
+   console.error("FULL ERROR:", error.response?.data || error.message || error);
     if (req.file) {
        if (fs.existsSync(req.file.path)) fs.unlink(req.file.path, () => {});
        if (typeof webmPath !== 'undefined' && fs.existsSync(webmPath)) fs.unlink(webmPath, () => {});
@@ -458,6 +458,7 @@ Provide the response in the following JSON format EXACTLY. Ensure the "score" is
   "feedback": "List of mistakes identified or general feedback",
   "explanationEnglish": "Simple English explanation of the mistakes and how to improve",
   "explanationTamil": "Explanation of the mistakes and how to improve translated to Tamil",
+  "explanationHindi": "Explanation of the mistakes and how to improve translated to Hindi",
   "score": "Score out of ${maxScore} formatted exactly as 'X/${maxScore}' (e.g., '4/${maxScore}')"
 }`;
 
@@ -525,6 +526,7 @@ Provide the response in the following JSON format EXACTLY. Ensure the "score" is
       feedback: aiData.feedback || "",
       explanationEnglish: aiData.explanationEnglish || "",
       explanationTamil: aiData.explanationTamil || "",
+      explanationHindi: aiData.explanationHindi || "",
       score: aiData.score || "",
       audioBase64,
       useClientTTS,
@@ -554,6 +556,7 @@ Provide the response in the following JSON format EXACTLY:
   "correctedSentence": "The corrected English sentence. Leave empty if no correction needed.",
   "explanationEnglish": "Simple English explanation of any mistakes. Leave empty if no correction.",
   "explanationTamil": "Explanation of the mistakes translated to Tamil. Leave empty if no correction.",
+  "explanationHindi": "Explanation of the mistakes translated to Hindi. Leave empty if no correction.",
   "encouragement": "A short, friendly word of encouragement (e.g., 'Great job!', 'Keep it up!').",
   "nextQuestion": "A natural follow-up question to keep the conversation going."
 }`;
@@ -619,6 +622,7 @@ Provide the response in the following JSON format EXACTLY:
       correctedSentence: aiData.correctedSentence || "",
       explanationEnglish: aiData.explanationEnglish || "",
       explanationTamil: aiData.explanationTamil || "",
+      explanationHindi: aiData.explanationHindi || "",
       encouragement: aiData.encouragement || "Good effort!",
       nextQuestion: aiData.nextQuestion || "What else would you like to talk about?",
       audioBase64,

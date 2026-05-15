@@ -304,6 +304,11 @@ function ChatPage() {
                 <p style={{ margin: 0, fontSize: '1.05rem', lineHeight: '1.5', color: '#fff' }}>{result.explanationTamil}</p>
               </div>
 
+              <div style={{ background: 'rgba(52, 152, 219, 0.1)', padding: '15px', borderRadius: '12px', borderLeft: '4px solid #3498db' }}>
+                <h4 style={{ color: '#3498db', margin: '0 0 8px 0', fontSize: '0.9rem', textTransform: 'uppercase' }}>Explanation (Hindi):</h4>
+                <p style={{ margin: 0, fontSize: '1.05rem', lineHeight: '1.5', color: '#fff' }}>{result.explanationHindi}</p>
+              </div>
+
               <button 
                 onClick={loadNewTask}
                 style={{ marginTop: '10px', background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '28px', padding: '15px', fontSize: '1.1rem', fontWeight: '600', cursor: 'pointer', transition: 'all 0.2s' }}
